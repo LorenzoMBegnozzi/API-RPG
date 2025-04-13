@@ -38,7 +38,7 @@ public class ItemMagico {
 
     @ManyToOne
     @JoinColumn(name = "personagem_id")
-    @JsonIgnore // Ignora a serialização do personagem
+    @JsonIgnore
     private Personagem personagem;
 
     @PrePersist
