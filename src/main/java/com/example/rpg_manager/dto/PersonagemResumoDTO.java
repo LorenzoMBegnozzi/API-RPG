@@ -21,5 +21,4 @@ public class PersonagemResumoDTO {
         this.defesa = personagem.getDefesa();
     }
 
-    // Getters e Setters (ou use Lombok com @Getter @Setter @AllArgsConstructor)
 }

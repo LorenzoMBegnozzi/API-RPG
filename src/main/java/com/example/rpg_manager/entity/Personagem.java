@@ -1,8 +1,6 @@
 package com.example.rpg_manager.entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonInclude(JsonInclude.Include.NON_NULL)  // Inclui o personagem nas respostas
 public class Personagem {
 
     @Id
@@ -40,6 +39,6 @@ public class Personagem {
         return this.defesa + itensMagicos.stream().mapToInt(ItemMagico::getDefesa).sum();
     }
 
-    @OneToMany(mappedBy = "personagem", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "personagem", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ItemMagico> itensMagicos = new ArrayList<>();
 }

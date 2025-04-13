@@ -19,5 +19,4 @@ public class ItemMagicoDTO {
         this.personagem = new PersonagemResumoDTO(item.getPersonagem());
     }
 
-    // Getters e Setters
 }

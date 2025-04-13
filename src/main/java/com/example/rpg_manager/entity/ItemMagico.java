@@ -1,6 +1,8 @@
 package com.example.rpg_manager.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
@@ -13,6 +15,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ItemMagico {
 
     @Id
@@ -27,14 +30,15 @@ public class ItemMagico {
 
     @Min(value = 0, message = "A força não pode ser negativa")
     @Max(value = 10, message = "A força não pode ser maior que 10")
-    private int forca;
+    private Integer forca;
 
     @Min(value = 0, message = "A defesa não pode ser negativa")
     @Max(value = 10, message = "A defesa não pode ser maior que 10")
-    private int defesa;
+    private Integer defesa;
 
     @ManyToOne
     @JoinColumn(name = "personagem_id")
+    @JsonIgnore // Ignora a serialização do personagem
     private Personagem personagem;
 
     @PrePersist
