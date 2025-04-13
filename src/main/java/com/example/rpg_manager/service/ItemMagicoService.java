@@ -36,7 +36,6 @@ public class ItemMagicoService {
         return itemMagicoRepository.findById(id);
     }
 
-    // ✅ Método novo com mensagem no retorno
     public ResponseEntity<String> salvarComMensagem(ItemMagico itemMagico) {
         try {
             StringBuilder mensagem = new StringBuilder("Item salvo com sucesso.");
